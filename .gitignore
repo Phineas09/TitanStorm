@@ -1,7 +1,7 @@
 TitanStorm/out/
+TitanStorm/target/
 TitanStorm/.idea/
 .idea_modules/
-TitanStorm/.idea/workspace.xml
 *.iml
 *.ipr
 *.iws
