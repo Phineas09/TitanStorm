@@ -1,0 +1,7 @@
+TitanStorm/out/
+TitanStorm/.idea/
+.idea_modules/
+TitanStorm/.idea/workspace.xml
+*.iml
+*.ipr
+*.iws
