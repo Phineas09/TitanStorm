@@ -1,35 +1,34 @@
 package ro.mta.se.lab.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class City {
 
-    IntegerProperty id;
+    StringProperty id;
     StringProperty name;
     StringProperty lat;
     StringProperty lon;
     StringProperty countryCode;
 
-    public City(Integer id, String name, String lat, String lon, String countryCode) {
-        this.id = new SimpleIntegerProperty(id);
-        this.name = new SimpleStringProperty(name);
+    public City(String id, String name, String lat, String lon, String countryCode) {
+        this.id = new SimpleStringProperty(id);
+        String resultString = name.replaceAll("[^\\x00-\\x7F]", "");
+        this.name = new SimpleStringProperty(resultString);
         this.lat = new SimpleStringProperty(lat);
         this.lon = new SimpleStringProperty(lon);
         this.countryCode = new SimpleStringProperty(countryCode);
     }
 
-    public int getId() {
+    public String getId() {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
+    public StringProperty idProperty() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id.set(id);
     }
 

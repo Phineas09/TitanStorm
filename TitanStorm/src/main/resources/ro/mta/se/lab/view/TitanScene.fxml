@@ -8,7 +8,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            >
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </left>
@@ -29,8 +31,8 @@
          <children>
             <Label fx:id="countryLabel" alignment="CENTER" contentDisplay="CENTER" text="Country" />
             <Label fx:id="cityLabel" alignment="CENTER" contentDisplay="CENTER" text="City" GridPane.rowIndex="1" />
-            <ComboBox fx:id="cityDropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="countryDropdown" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="cityDropdown" onAction="#cityActionHandler" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="countryDropdown" onAction="#countryActionHandler" prefWidth="150.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </top>
