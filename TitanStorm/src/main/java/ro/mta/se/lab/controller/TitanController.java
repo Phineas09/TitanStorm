@@ -1,8 +1,7 @@
 package ro.mta.se.lab.controller;
 
-import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableMap;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -11,18 +10,17 @@ import javafx.util.StringConverter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import ro.mta.se.lab.model.City;
-
+import ro.mta.se.lab.view.TitanLogger;
 
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 public class TitanController {
 
-    private ObservableMap<String, ArrayList<City>> countryList;
+    private HashMap<String, ArrayList<City>> countryList;
 
     @FXML
     private Label countryLabel;
@@ -31,40 +29,65 @@ public class TitanController {
     private Label cityLabel;
 
     @FXML
-    private ComboBox<City> countryDropdown;
+    private ComboBox<String> countryDropdown;
 
     @FXML
     private ComboBox<City> cityDropdown;
 
     public TitanController() {
+    }
 
+    public TitanController(HashMap<String, ArrayList<City>> countryList) {
+        this.countryList = countryList;
     }
 
     @FXML
     private void initialize() {
 
-        City week_days[] = {
-                new City(1, "Moara Vlasiei", "10", "10", "RO"),
-                new City(2, "Balotesti", "12", "11", "RO")
-        };
+        Set<String> sortedKeys = new TreeSet<String>(countryList.keySet());
+        countryDropdown.setItems(FXCollections.observableArrayList(sortedKeys));
+        countryDropdown.getSelectionModel().select(0); //Auto select the first
 
-        cityDropdown.setItems(FXCollections.observableArrayList(week_days));
-        //Set converter to get names
+        cityDropdown.setItems(FXCollections.observableArrayList(countryList.get(countryDropdown.getSelectionModel().getSelectedItem())));
+
         cityDropdown.setConverter(new StringConverter<>() {
+
             @Override
             public String toString(City object) {
-                return object.getName();
+                try {
+                    return object.getName();
+                } catch (Exception e) {
+                    return null;
+                }
             }
 
             @Override
             public City fromString(String string) {
-                return cityDropdown.getItems().stream().filter(ap ->
-                        ap.getName().equals(string)).findFirst().orElse(null);
+                try {
+                    return cityDropdown.getItems().stream().filter(ap ->
+                            ap.getName().equals(string)).findFirst().orElse(null);
+                } catch (Exception e) {
+                    return null;
+                }
             }
         });
         cityDropdown.getSelectionModel().select(0);
 
+        //make request and write rez
+
     }
+
+    @FXML
+    private void cityActionHandler(ActionEvent event) {
+        System.out.println(cityDropdown.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    private void countryActionHandler(ActionEvent event) {
+        cityDropdown.setItems(FXCollections.observableArrayList(countryList.get(countryDropdown.getSelectionModel().getSelectedItem())));
+        cityDropdown.getSelectionModel().select(0);
+    }
+
 
     private void makeCityList() {
         try {
@@ -73,7 +96,9 @@ public class TitanController {
             //Object obj = parser.parse(new FileReader("src/main/resources/ro/mta/se/lab/model/cityList.json"));
             String content = Files.readString(Paths.get("src/main/resources/ro/mta/se/lab/model/cityList.json"),
                     StandardCharsets.UTF_8);
-            myWriter.write("ID\tnm\tlat\tlon\tcountryCode\n");
+
+            //myWriter.write("ID\tnm\tlat\tlon\tcountryCode\n");
+
             // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
             JSONArray jsonArray = new JSONArray(content);
             for (Object o : jsonArray) {
@@ -88,7 +113,7 @@ public class TitanController {
             myWriter.close();
             System.out.println("Done!\n\n");
         } catch (Exception e) {
-            e.printStackTrace();
+            TitanLogger.getInstance().write(e.getMessage(), 2, 1);
         }
     }
 
