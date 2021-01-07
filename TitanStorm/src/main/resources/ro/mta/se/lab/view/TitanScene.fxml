@@ -1,24 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            >
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </right>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="397.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="countryLabel" alignment="CENTER" contentDisplay="CENTER" text="Country" />
+            <Label fx:id="cityLabel" alignment="CENTER" contentDisplay="CENTER" text="City" textOverrun="CLIP" GridPane.columnIndex="1" />
+            <ComboBox fx:id="cityDropdown" onAction="#cityActionHandler" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="countryDropdown" onAction="#countryActionHandler" prefWidth="150.0" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="272.0" prefWidth="398.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="currentWeatherIcon" fitHeight="110.0" fitWidth="150.0" layoutX="144.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/10d.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="currentDegreesF" layoutX="283.0" layoutY="49.0" text="65°F">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="weatherDescription" alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="136.0" prefHeight="24.0" prefWidth="114.0" text="Clear Sky" textAlignment="CENTER" />
+            <Label fx:id="currentDegreesC" layoutX="71.0" layoutY="49.0" text="23°C">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <GridPane layoutX="-1.0" layoutY="190.0" prefHeight="166.0" prefWidth="398.0">
+              <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Pressure" GridPane.rowIndex="1" />
+                  <Label text="Label" GridPane.columnIndex="1" />
+                  <Label text="Sunrise" />
+                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Label" GridPane.columnIndex="3" />
+                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label text="Sunset" GridPane.columnIndex="2" />
+                  <Label text="Humidity" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="Uv Index" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label text="Clouds" GridPane.rowIndex="2" />
+                  <Label text="Wind Speed" GridPane.rowIndex="3" />
+                  <Label text="Wind Direction" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <GridPane fx:id="bottomGridPane" prefHeight="165.0" prefWidth="398.0" styleClass="bottomGridPane" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,11 +98,64 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="countryLabel" alignment="CENTER" contentDisplay="CENTER" text="Country" />
-            <Label fx:id="cityLabel" alignment="CENTER" contentDisplay="CENTER" text="City" GridPane.rowIndex="1" />
-            <ComboBox fx:id="cityDropdown" onAction="#cityActionHandler" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="countryDropdown" onAction="#countryActionHandler" prefWidth="150.0" GridPane.columnIndex="1" />
+            <AnchorPane fx:id="bottomGridElement_1" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" styleClass="clickedAnchorPane">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/10d.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="bottomGridElement_2" layoutX="10.0" layoutY="10.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="37.0" prefWidth="199.0" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="153.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/01d.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="bottomGridElement_3" layoutX="10.0" layoutY="10.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/10d.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="bottomGridElement_4" layoutX="10.0" layoutY="65.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="153.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/10d.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="bottomGridElement_5" layoutX="209.0" layoutY="65.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/10d.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="bottomGridElement_6" layoutX="10.0" layoutY="120.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="153.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/10d.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </GridPane>
-   </top>
+   </bottom>
 </BorderPane>
