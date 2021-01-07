@@ -1,11 +1,11 @@
 package ro.mta.se.lab.controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.util.StringConverter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,8 +31,12 @@ public class TitanController {
     @FXML
     private ComboBox<String> countryDropdown;
 
+    private AutoCompleteComboBox<String> autoCompleteCountryDropdown;
+
     @FXML
     private ComboBox<City> cityDropdown;
+
+    private AutoCompleteComboBox<String> autoCompleteCityDropdown;
 
     public TitanController() {
     }
@@ -43,13 +47,10 @@ public class TitanController {
 
     @FXML
     private void initialize() {
-
-        Set<String> sortedKeys = new TreeSet<String>(countryList.keySet());
+        Set<String> sortedKeys = new TreeSet<>(countryList.keySet());
         countryDropdown.setItems(FXCollections.observableArrayList(sortedKeys));
-        countryDropdown.getSelectionModel().select(0); //Auto select the first
 
-        cityDropdown.setItems(FXCollections.observableArrayList(countryList.get(countryDropdown.getSelectionModel().getSelectedItem())));
-
+/*
         cityDropdown.setConverter(new StringConverter<>() {
 
             @Override
@@ -70,22 +71,54 @@ public class TitanController {
                     return null;
                 }
             }
-        });
-        cityDropdown.getSelectionModel().select(0);
+        });*/
+        autoCompleteCountryDropdown = new AutoCompleteComboBox<>(countryDropdown);
+        autoCompleteCityDropdown = new AutoCompleteComboBox<>(cityDropdown);
 
-        //make request and write rez
+
+        //Maybe get local forecast
 
     }
 
     @FXML
     private void cityActionHandler(ActionEvent event) {
-        System.out.println(cityDropdown.getSelectionModel().getSelectedItem());
+        try {
+            threadDispatcherSetForecast(cityDropdown.getSelectionModel().getSelectedItem());
+        }
+        catch (Exception ex) {
+        }
+    }
+
+    public void threadDispatcherSetForecast(City city) {
+        //System.out.println(city.getName());
+
+        TitanThread.runNewThread(() -> {
+            while (true) {
+                if (Thread.interrupted()) {
+                    System.out.println("Make request");
+                    WeatherRequestController weatherRequest = new WeatherRequestController();
+                    String jsonResponse = weatherRequest.getForecastByCountryId(city.getId());
+                    //Parse response
+
+                    //Change background images and other stuff
+                    Platform.runLater(() -> {
+                    });
+                    return;
+                }
+            }
+        });
     }
 
     @FXML
     private void countryActionHandler(ActionEvent event) {
-        cityDropdown.setItems(FXCollections.observableArrayList(countryList.get(countryDropdown.getSelectionModel().getSelectedItem())));
-        cityDropdown.getSelectionModel().select(0);
+        try {
+            cityDropdown.setItems(FXCollections.observableArrayList(countryList.get(countryDropdown.getSelectionModel().getSelectedItem())));
+            autoCompleteCityDropdown.refreshData();
+            //cityDropdown.getSelectionModel().select(0);
+        }
+        catch (Exception e) {
+            //This can occur from the search
+        }
     }
 
 

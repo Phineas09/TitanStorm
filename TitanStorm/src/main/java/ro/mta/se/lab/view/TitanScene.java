@@ -30,6 +30,8 @@ public class TitanScene {
 
             fxmlLoader.setController(new TitanController(countryList));
             scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(Main.class.getResource("view/styles.css").toExternalForm());
+
         } catch (IOException exception) {
             TitanLogger.getInstance().write(exception.getMessage(), 2, 1);
         }
