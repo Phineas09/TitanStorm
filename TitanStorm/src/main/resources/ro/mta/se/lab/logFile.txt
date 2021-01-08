@@ -10,3 +10,54 @@
 [ 08.01.2021 - 00.46.30 ] Error: Controller value already specified.
 /D:/Projects/TitanStorm/TitanStorm/target/classes/ro/mta/se/lab/view/TitanScene.fxml:15
 
+[ 08.01.2021 - 10.50.21 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 10.51.58 ] Info: WeatherProvider provided a 7 day forecast for city Ordino. 
+[ 08.01.2021 - 10.53.20 ] Info: WeatherProvider provided a 7 day forecast for city United Arab Emirates. 
+[ 08.01.2021 - 10.54.27 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 10.55.53 ] Info: WeatherProvider provided a 7 day forecast for city Tukzr. 
+[ 08.01.2021 - 10.56.50 ] Info: WeatherProvider provided a 7 day forecast for city Kuhsn. 
+[ 08.01.2021 - 11.00.01 ] Info: WeatherProvider provided a 7 day forecast for city Tukzr. 
+[ 08.01.2021 - 11.02.55 ] Info: WeatherProvider provided a 7 day forecast for city Sant Juli de Lria. 
+[ 08.01.2021 - 11.03.30 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 11.04.15 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 11.07.28 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 11.11.36 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 11.14.17 ] Info: WeatherProvider provided a 7 day forecast for city United Arab Emirates. 
+[ 08.01.2021 - 11.15.24 ] Info: WeatherProvider provided a 7 day forecast for city Sant Juli de Lria. 
+[ 08.01.2021 - 11.19.53 ] Info: WeatherProvider provided a 7 day forecast for city Kuhsn. 
+[ 08.01.2021 - 11.21.55 ] Info: WeatherProvider provided a 7 day forecast for city Kuhsn. 
+[ 08.01.2021 - 11.24.26 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 11.28.05 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 11.28.58 ] Info: WeatherProvider provided a 7 day forecast for city United Arab Emirates. 
+[ 08.01.2021 - 11.30.18 ] Info: WeatherProvider provided a 7 day forecast for city Kuhsn. 
+[ 08.01.2021 - 11.31.29 ] Info: WeatherProvider provided a 7 day forecast for city Kuhsn. 
+[ 08.01.2021 - 11.32.27 ] Info: WeatherProvider provided a 7 day forecast for city United Arab Emirates. 
+[ 08.01.2021 - 11.33.00 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 11.33.08 ] Info: WeatherProvider provided a 7 day forecast for city Dubai. 
+[ 08.01.2021 - 11.33.19 ] Info: WeatherProvider provided a 7 day forecast for city Al amrnyah. 
+[ 08.01.2021 - 11.33.29 ] Info: WeatherProvider provided a 7 day forecast for city Markaz-e ukmat-e Suln-e Bakwh. 
+[ 08.01.2021 - 11.33.55 ] Info: WeatherProvider provided a 7 day forecast for city Sant Juli de Lria. 
+[ 08.01.2021 - 11.33.59 ] Info: WeatherProvider provided a 7 day forecast for city Ordino. 
+[ 08.01.2021 - 11.34.08 ] Info: WeatherProvider provided a 7 day forecast for city Canillo. 
+[ 08.01.2021 - 11.34.33 ] Info: WeatherProvider provided a 7 day forecast for city Zorkot. 
+[ 08.01.2021 - 11.34.37 ] Info: WeatherProvider provided a 7 day forecast for city Mray. 
+[ 08.01.2021 - 11.37.47 ] Info: WeatherProvider provided a 7 day forecast for city Kuhsn. 
+[ 08.01.2021 - 11.40.04 ] Info: WeatherProvider provided a 7 day forecast for city Zuwayhir. 
+[ 08.01.2021 - 12.09.43 ] Info: WeatherProvider provided a 7 day forecast for city Umm Al Quwain City. 
+[ 08.01.2021 - 12.12.20 ] Info: WeatherProvider provided a 7 day forecast for city Wulswl Bihsd. 
+[ 08.01.2021 - 12.12.34 ] Info: WeatherProvider provided a 7 day forecast for city Wshr. 
+[ 08.01.2021 - 12.13.01 ] Info: WeatherProvider provided a 7 day forecast for city Ztreni. 
+[ 08.01.2021 - 12.18.56 ] Info: WeatherProvider provided a 7 day forecast for city Bucharest. 
+[ 08.01.2021 - 12.47.00 ] Info: WeatherProvider provided a 7 day forecast for city Zorlenu Mare. 
+[ 08.01.2021 - 12.47.17 ] Info: WeatherProvider provided a 7 day forecast for city Zam. 
+[ 08.01.2021 - 12.47.28 ] Info: WeatherProvider provided a 7 day forecast for city Zam. 
+[ 08.01.2021 - 12.47.28 ] Info: WeatherProvider provided a 7 day forecast for city Zam. 
+[ 08.01.2021 - 12.47.28 ] Info: WeatherProvider provided a 7 day forecast for city Zam. 
+[ 08.01.2021 - 12.47.30 ] Info: WeatherProvider provided a 7 day forecast for city Bucureci. 
+[ 08.01.2021 - 15.13.54 ] Info: WeatherProvider provided a 7 day forecast for city Bucharest. 
+[ 08.01.2021 - 15.17.34 ] Info: WeatherProvider provided a 7 day forecast for city Kuhsn. 
+[ 08.01.2021 - 15.17.51 ] Info: WeatherProvider provided a 7 day forecast for city Vulcan. 
+[ 08.01.2021 - 15.18.06 ] Info: WeatherProvider provided a 7 day forecast for city Zorya. 
+[ 08.01.2021 - 15.19.02 ] Info: WeatherProvider provided a 7 day forecast for city Wulswl Bihsd. 
+[ 08.01.2021 - 15.19.46 ] Info: WeatherProvider provided a 7 day forecast for city Kuhsn. 
+[ 08.01.2021 - 15.45.47 ] Info: WeatherProvider provided a 7 day forecast for city Sant Juli de Lria. 

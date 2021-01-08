@@ -24,8 +24,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" />
         </rowConstraints>
          <children>
-            <Label fx:id="countryLabel" alignment="CENTER" contentDisplay="CENTER" text="Country" />
-            <Label fx:id="cityLabel" alignment="CENTER" contentDisplay="CENTER" text="City" textOverrun="CLIP" GridPane.columnIndex="1" />
+            <Label fx:id="countryLabel" alignment="CENTER" contentDisplay="CENTER" text="Country">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Label>
+            <Label fx:id="cityLabel" alignment="CENTER" contentDisplay="CENTER" text="City" textOverrun="CLIP" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Label>
             <ComboBox fx:id="cityDropdown" onAction="#cityActionHandler" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="countryDropdown" onAction="#countryActionHandler" prefWidth="150.0" GridPane.rowIndex="1" />
          </children>
@@ -39,13 +45,16 @@
                   <Image url="@../icons/10d.png" />
                </image>
             </ImageView>
-            <Label fx:id="currentDegreesF" layoutX="283.0" layoutY="49.0" text="65°F">
+            <Label fx:id="currentDegreesFLabel" layoutX="282.0" layoutY="48.0" text="65.0°F">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label fx:id="weatherDescription" alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="136.0" prefHeight="24.0" prefWidth="114.0" text="Clear Sky" textAlignment="CENTER" />
-            <Label fx:id="currentDegreesC" layoutX="71.0" layoutY="49.0" text="23°C">
+            <Label fx:id="weatherDescriptionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="93.0" layoutY="136.0" prefHeight="23.0" prefWidth="210.0" text="Clear Sky" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label fx:id="currentDegreesCLabel" layoutX="61.0" layoutY="48.0" text="23.0°C">
                <font>
                   <Font size="21.0" />
                </font>
@@ -64,25 +73,54 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Pressure" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" />
-                  <Label text="Sunrise" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Label text="Sunset" GridPane.columnIndex="2" />
-                  <Label text="Humidity" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label text="Uv Index" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label text="Pressure" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="sunriseLabel" text="Label" GridPane.columnIndex="1" />
+                  <Label text="Sunrise">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="pressureLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="cloudsLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="windSpeedLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="sunsetLabel" text="Label" GridPane.columnIndex="3" />
+                  <Label fx:id="humidityLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label fx:id="uvIndexLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label text="Sunset" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label text="Humidity" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label text="Uv Index" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <Label GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Label text="Clouds" GridPane.rowIndex="2" />
-                  <Label text="Wind Speed" GridPane.rowIndex="3" />
-                  <Label text="Wind Direction" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Label text="Clouds" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label text="Wind Speed" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label text="Wind Direction" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="windDirectionLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                </children>
             </GridPane>
+            <Label fx:id="weatherDescriptionCurrentDate" alignment="CENTER" contentDisplay="CENTER" layoutX="93.0" layoutY="163.0" prefHeight="23.0" prefWidth="210.0" text="10.07.2021 11:20" textAlignment="CENTER">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
@@ -98,58 +136,160 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane fx:id="bottomGridElement_1" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" styleClass="clickedAnchorPane">
+            <AnchorPane fx:id="bottomGridElement_1" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bottomIcon_1" fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/10d.png" />
                      </image>
                   </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="bottomGridElement_2" layoutX="10.0" layoutY="10.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="37.0" prefWidth="199.0" GridPane.columnIndex="1">
-               <children>
-                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="153.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/01d.png" />
-                     </image>
-                  </ImageView>
+                  <Label fx:id="bottomDate_1" layoutX="66.0" layoutY="7.0" text="08.12.2020" />
+                  <Label fx:id="bottomDescription_1" layoutX="66.0" layoutY="28.0" text="Clear Sky" />
+                  <Label layoutX="143.0" layoutY="4.0" text="Min/Max ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMin_1" layoutX="154.0" layoutY="18.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMax_1" layoutX="154.0" layoutY="32.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="bottomGridElement_3" layoutX="10.0" layoutY="10.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bottomIcon_3" fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/10d.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="bottomDate_3" layoutX="66.0" layoutY="7.0" text="08.12.2020" />
+                  <Label fx:id="bottomDescription_3" layoutX="66.0" layoutY="28.0" text="Clear Sky" />
+                  <Label layoutX="143.0" layoutY="4.0" text="Min/Max ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMin_3" layoutX="154.0" layoutY="18.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMax_3" layoutX="154.0" layoutY="32.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="bottomGridElement_4" layoutX="10.0" layoutY="65.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <AnchorPane fx:id="bottomGridElement_5" layoutX="10.0" layoutY="10.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="153.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bottomIcon_5" fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/10d.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="bottomDate_5" layoutX="66.0" layoutY="7.0" text="08.12.2020" />
+                  <Label fx:id="bottomDescription_5" layoutX="66.0" layoutY="28.0" text="Clear Sky" />
+                  <Label layoutX="143.0" layoutY="4.0" text="Min/Max ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMin_5" layoutX="154.0" layoutY="18.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMax_5" layoutX="154.0" layoutY="32.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="bottomGridElement_5" layoutX="209.0" layoutY="65.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <AnchorPane fx:id="bottomGridElement_4" layoutX="10.0" layoutY="10.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bottomIcon_4" fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/10d.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="bottomDate_4" layoutX="66.0" layoutY="7.0" text="08.12.2020" />
+                  <Label fx:id="bottomDescription_4" layoutX="66.0" layoutY="28.0" text="Clear Sky" />
+                  <Label layoutX="143.0" layoutY="4.0" text="Min/Max ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMin_4" layoutX="154.0" layoutY="18.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMax_4" layoutX="154.0" layoutY="32.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="bottomGridElement_6" layoutX="10.0" layoutY="120.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <AnchorPane fx:id="bottomGridElement_6" layoutX="209.0" layoutY="65.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="32.0" layoutX="153.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bottomIcon_6" fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/10d.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="bottomDate_6" layoutX="66.0" layoutY="7.0" text="08.12.2020" />
+                  <Label fx:id="bottomDescription_6" layoutX="66.0" layoutY="28.0" text="Clear Sky" />
+                  <Label layoutX="143.0" layoutY="4.0" text="Min/Max ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMin_6" layoutX="154.0" layoutY="18.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMax_6" layoutX="154.0" layoutY="32.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="bottomGridElement_2" layoutX="10.0" layoutY="10.0" onMouseClicked="#bottomGridPaneElementSelectedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fx:id="bottomIcon_2" fitHeight="80.0" fitWidth="32.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/10d.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="bottomDate_2" layoutX="66.0" layoutY="7.0" text="08.12.2020" />
+                  <Label fx:id="bottomDescription_2" layoutX="66.0" layoutY="28.0" text="Clear Sky" />
+                  <Label layoutX="143.0" layoutY="4.0" text="Min/Max ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMin_2" layoutX="154.0" layoutY="18.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bottomMax_2" layoutX="154.0" layoutY="32.0" text="10 C">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
