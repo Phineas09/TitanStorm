@@ -3,10 +3,14 @@ package ro.mta.se.lab.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ro.mta.se.lab.Main;
 import ro.mta.se.lab.controller.TitanController;
 import ro.mta.se.lab.model.City;
+import ro.mta.se.lab.model.WeatherModel;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -20,7 +24,11 @@ public class TitanScene {
     private static Scene scene = null;
     private static Stage bigStage = null;
     private static final String ScenePath = "view/TitanScene";
+    private static boolean visibleGridPanes = false;
 
+    //I need two maps for background and color association
+    private static HashMap<String, String> iconToBackgroundMap;
+    private static HashMap<String, String> backgroundToColorSchemeMap;
 
     private TitanScene(String scenePath) {
         try {
@@ -32,6 +40,44 @@ public class TitanScene {
             fxmlLoader.setController(new TitanController(countryList));
             scene = new Scene(fxmlLoader.load());
             scene.getStylesheets().add(Main.class.getResource("view/styles.css").toExternalForm());
+
+            iconToBackgroundMap = new HashMap<>();
+            iconToBackgroundMap.put("01d", "day_clearsky");
+            iconToBackgroundMap.put("02d", "day_partlycloudy");
+            iconToBackgroundMap.put("03d", "day_partlycloudy");
+            iconToBackgroundMap.put("04d", "day_cloudy");
+            iconToBackgroundMap.put("09d", "day_rain");
+            iconToBackgroundMap.put("10d", "day_rain");
+            iconToBackgroundMap.put("11d", "day_rain");
+            iconToBackgroundMap.put("13d", "day_snow");
+            iconToBackgroundMap.put("50d", "day_fog");
+            iconToBackgroundMap.put("01n", "night_clearsky");
+            iconToBackgroundMap.put("02n", "night_partlycloudy");
+            iconToBackgroundMap.put("03n", "night_partlycloudy");
+            iconToBackgroundMap.put("04n", "night_cloudy");
+            iconToBackgroundMap.put("09n", "night_rain");
+            iconToBackgroundMap.put("10n", "night_rain");
+            iconToBackgroundMap.put("11n", "night_rain");
+            iconToBackgroundMap.put("13n", "night_snow");
+            iconToBackgroundMap.put("50n", "night_rain");
+
+            backgroundToColorSchemeMap = new HashMap<>();
+            backgroundToColorSchemeMap.put("day_clearsky", "black");
+            backgroundToColorSchemeMap.put("day_cloudy", "black");
+            backgroundToColorSchemeMap.put("day_fog", "black");
+            backgroundToColorSchemeMap.put("day_partlycloudy", "black");
+            backgroundToColorSchemeMap.put("day_rain", "white");
+            backgroundToColorSchemeMap.put("day_snow", "black");
+            backgroundToColorSchemeMap.put("night_clearsky", "white");
+            backgroundToColorSchemeMap.put("night_cloudy", "white");
+            backgroundToColorSchemeMap.put("night_partlycloudy", "white");
+            backgroundToColorSchemeMap.put("night_rain", "white");
+            backgroundToColorSchemeMap.put("night_snow", "white");
+
+            scene.lookup("#infoGridPane").setVisible(false);
+            scene.lookup("#bottomGridPane").setVisible(false);
+            scene.lookup("#refreshButton").setVisible(false);
+
 
         } catch (IOException exception) {
             TitanLogger.getInstance().write(exception.getMessage(), 2, 1);
@@ -57,17 +103,26 @@ public class TitanScene {
         return instance;
     }
 
-    public void changePrimaryColor(String color) {
+    public void changeBackgroundAndColorScheme(WeatherModel weatherModel) {
 
-        String image = Main.class.getResource("backgrounds/day_clearsky.png").toExternalForm();
+        String image = Main.class.getResource("backgrounds/" + iconToBackgroundMap.get(weatherModel.getWeatherIcon()) +".png").toExternalForm();
         bigStage.getScene().getRoot().setStyle(
                 "-fx-background-image: url('" + image + "'); " +
                 "-fx-background-repeat: stretch;" +
                 "-fx-background-size: cover;" +
                 "-fx-background-position: center center;" +
-                "-fx-text-background-color: white;"
+                "-fx-text-background-color:" + backgroundToColorSchemeMap.get(iconToBackgroundMap.get(weatherModel.getWeatherIcon())) + ";"
         );
 
+    }
+
+    public void makeGridPanesVisible() {
+        if(!visibleGridPanes) {
+            bigStage.getScene().lookup("#infoGridPane").setVisible(true);
+            bigStage.getScene().lookup("#bottomGridPane").setVisible(true);
+            bigStage.getScene().lookup("#refreshButton").setVisible(true);
+            visibleGridPanes = true;
+        }
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

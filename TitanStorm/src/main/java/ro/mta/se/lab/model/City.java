@@ -11,6 +11,14 @@ public class City {
     StringProperty lon;
     StringProperty countryCode;
 
+    public City(String name) {
+        this.name = new SimpleStringProperty(name);
+        this.id = null;
+        this.lat = null;
+        this.lon = null;
+        this.countryCode = null;
+    }
+
     public City(String id, String name, String lat, String lon, String countryCode) {
         this.id = new SimpleStringProperty(id);
         String resultString = name.replaceAll("[^\\x00-\\x7F]", "");

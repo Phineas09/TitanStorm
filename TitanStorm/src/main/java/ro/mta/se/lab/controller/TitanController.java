@@ -15,32 +15,27 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import ro.mta.se.lab.controller.exceptions.TitanException;
 import ro.mta.se.lab.model.City;
+import ro.mta.se.lab.model.WeatherModel;
 import ro.mta.se.lab.view.TitanLogger;
 import ro.mta.se.lab.view.TitanScene;
 
-import javax.swing.text.IconView;
 import java.io.File;
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class TitanController {
 
-    private HashMap<String, ArrayList<City>> countryList;
-
-    @FXML
-    private Label countryLabel;
-
-    @FXML
-    private Label cityLabel;
-
     @FXML
     private ComboBox<String> countryDropdown;
-
-    private AutoCompleteComboBox<String> autoCompleteCountryDropdown;
 
     @FXML
     private ComboBox<City> cityDropdown;
@@ -51,8 +46,9 @@ public class TitanController {
     @FXML
     private GridPane bottomGridPane;
 
+    private HashMap<String, ArrayList<City>> countryList;
     private AutoCompleteComboBox<String> autoCompleteCityDropdown;
-
+    private AutoCompleteComboBox<String> autoCompleteCountryDropdown;
     private WeatherProvider weatherProvider;
 
     public TitanController() {
@@ -65,21 +61,60 @@ public class TitanController {
 
     @FXML
     private void initialize() {
-
-        //Set test image
-        File file = new File("src/main/resources/ro/mta/se/lab/icons/01d.png");
-        Image image = new Image(file.toURI().toString());
-        currentWeatherIcon.setImage(image);
-
-
         Set<String> sortedKeys = new TreeSet<>(countryList.keySet());
         countryDropdown.setItems(FXCollections.observableArrayList(sortedKeys));
 
         autoCompleteCountryDropdown = new AutoCompleteComboBox<>(countryDropdown);
         autoCompleteCityDropdown = new AutoCompleteComboBox<>(cityDropdown);
+        threadDispatcherGetCurrentLocationForecast();
+    }
 
+    @FXML
+    private void refreshCurrentForecastHandler(MouseEvent mouseEvent) {
+        try {
+            threadDispatcherSetForecast(cityDropdown.getSelectionModel().getSelectedItem());
+            TitanLogger.getInstance().write("Refreshing forecast!", 2, 3);
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getCause());
+        }
+    }
 
-        //Maybe get local forecast
+    @FXML
+    private void getCurrentLocationForecastHandler(MouseEvent mouseEvent) {
+        threadDispatcherGetCurrentLocationForecast();
+    }
+
+    private void threadDispatcherGetCurrentLocationForecast() {
+        TitanThread.runNewThread(() -> {
+            if (!Thread.interrupted()) {
+                try {
+                    TitanLogger.getInstance().write("Finding location and loading forecast!", 2, 3);
+                    //Make request to find the ip address
+
+                    WeatherRequest requestMaker = new WeatherRequest();
+                    String currentCityJSON = requestMaker.makeHttpRequest("https://geo.ipify.org/api/v1?apiKey=" +
+                            requestMaker.getGeoApiKey());
+
+                    //Create city object
+
+                    JSONObject jsonObject = (new JSONObject(currentCityJSON)).getJSONObject("location");
+                    City currentCity = new City("", jsonObject.getString("city"),
+                            jsonObject.get("lat").toString(), jsonObject.get("lng").toString(),
+                            jsonObject.getString("country"));
+
+                Platform.runLater(() -> {
+                    countryDropdown.getSelectionModel().select(currentCity.getCountryCode());
+                    cityDropdown.getSelectionModel().select(currentCity);
+                    //Event will trigger and wil auto load the currentCity, we just needed to find it!
+                });
+                } catch (TitanException titanException) {
+                    titanException.getMessage();
+                } catch (Exception e) {
+                    TitanLogger.getInstance().write(e.getMessage(), 2, 1);
+                }
+            }
+        });
     }
 
     @FXML
@@ -92,30 +127,77 @@ public class TitanController {
     }
 
     public void threadDispatcherSetForecast(City city) {
-        //System.out.println(city.getName());
-
         TitanThread.runNewThread(() -> {
-            while (true) {
-                if (Thread.interrupted()) {
-                    System.out.println("Make request");
-                    //WeatherRequest weatherRequest = new WeatherRequest();
-                    //WeatherRequest weatherRequest = new WeatherRequest().getWeekForecast();
+            if (!Thread.interrupted()) {
+                List<WeatherModel> weatherList =  weatherProvider.getWeekWeather(city);
+                //Change background images and other stuff
 
-                    //String jsonResponse = weatherRequest.getWeekForecast(city);
-
-
-                    //Parse response
-                    //System.out.println(jsonResponse);
-
-                    //Change background images and other stuff
-                    Platform.runLater(() -> {
-                        clearAllSelectionsFromBottomPane();
-                    });
-                    return;
-                }
+                Platform.runLater(() -> {
+                    TitanScene.getInstance().makeGridPanesVisible(); //Only executed once
+                    clearAllSelectionsFromBottomPane();
+                    loadMainWeatherForecast(weatherList.get(0));
+                    loadSideWeatherForecast(weatherList);
+                });
             }
         });
     }
+
+    private void loadSideWeatherForecast(List<WeatherModel> weatherModelList) {
+        //We start from 1 to < 6
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        DecimalFormat df = new DecimalFormat("0.0");
+
+        for (Node child : bottomGridPane.getChildren()) {
+            AnchorPane anchorPane = (AnchorPane)child;
+            int weatherIndex = Integer.parseInt(anchorPane.getId().split("_")[1]);
+            WeatherModel currentWeather = weatherModelList.get(weatherIndex);
+
+            File file = new File("src/main/resources/ro/mta/se/lab/icons/" + currentWeather.getWeatherIcon() + ".png");
+            Image image = new Image(file.toURI().toString());
+            //Get the icon
+            ((ImageView)anchorPane.lookup("#bottomIcon_" + weatherIndex)).setImage(image);
+            ((Label)anchorPane.lookup("#bottomDate_" + weatherIndex)).setText(dateFormat.format(currentWeather.getTimeNow()));
+            ((Label)anchorPane.lookup("#bottomDescription_" + weatherIndex)).setText(currentWeather.getWeatherDescription());
+            ((Label)anchorPane.lookup("#bottomMin_" + weatherIndex)).setText(df.format(Double.parseDouble(currentWeather.getMinTemp())) + "\u2103");
+            ((Label)anchorPane.lookup("#bottomMax_" + weatherIndex)).setText(df.format(Double.parseDouble(currentWeather.getMaxTemp())) + "\u2103");
+
+        }
+
+    }
+
+    private void loadMainWeatherForecast(WeatherModel weatherModel) {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        DateFormat nowFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        //String strDate = dateFormat.format(date);
+
+        File file = new File("src/main/resources/ro/mta/se/lab/icons/" + weatherModel.getWeatherIcon() + ".png");
+        Image image = new Image(file.toURI().toString());
+        currentWeatherIcon.setImage(image);
+
+        DecimalFormat df = new DecimalFormat("0.0");
+
+
+        ((Label)currentWeatherIcon.getParent().lookup("#weatherDescriptionCurrentDate")).setText(nowFormat.format(weatherModel.getTimeNow()));
+
+        ((Label)currentWeatherIcon.getParent().lookup("#currentDegreesCLabel")).setText(df.format(Double.parseDouble(weatherModel.getCurrentTempC())) + "\u2103");
+        ((Label)currentWeatherIcon.getParent().lookup("#currentDegreesFLabel")).setText(weatherModel.convertToF(weatherModel.getCurrentTempC()) + "\u2109");
+        ((Label)currentWeatherIcon.getParent().lookup("#weatherDescriptionLabel")).setText(weatherModel.getWeatherDescription());
+        ((Label)currentWeatherIcon.getParent().lookup("#pressureLabel")).setText(weatherModel.getPressure() + " hPa");
+        ((Label)currentWeatherIcon.getParent().lookup("#cloudsLabel")).setText(weatherModel.getClouds() + " %");
+
+        ((Label)currentWeatherIcon.getParent().lookup("#sunsetLabel")).setText(dateFormat.format(weatherModel.getSunSet()));
+        ((Label)currentWeatherIcon.getParent().lookup("#sunriseLabel")).setText(dateFormat.format(weatherModel.getSunRise()));
+
+        ((Label)currentWeatherIcon.getParent().lookup("#humidityLabel")).setText(weatherModel.getHumidity() + " %");
+        ((Label)currentWeatherIcon.getParent().lookup("#uvIndexLabel")).setText(weatherModel.getUvIndex());
+
+        ((Label)currentWeatherIcon.getParent().lookup("#windSpeedLabel")).setText(weatherModel.getWindSpeed() + " km/h");
+        ((Label)currentWeatherIcon.getParent().lookup("#windDirectionLabel")).setText(weatherModel.getWindDeg() + " deg");
+
+        //Change scene background and colors
+        TitanScene.getInstance().changeBackgroundAndColorScheme(weatherModel);
+    }
+
 
     @FXML
     private void countryActionHandler(ActionEvent event) {
@@ -137,25 +219,26 @@ public class TitanController {
     }
 
     @FXML
-    public void bottomGridPaneElementSelectedHandler(MouseEvent mouseEvent) {
+    private void bottomGridPaneElementSelectedHandler(MouseEvent mouseEvent) {
         try {
-            TitanScene.getInstance().changePrimaryColor("");
-
             AnchorPane anchorPaneTarget = (AnchorPane)mouseEvent.getSource();
             if(anchorPaneTarget.getStyleClass().contains("clickedAnchorPane")) {
                 //Uncheck and load current weather
-                System.out.println("Load element 0");
+                loadMainWeatherForecast(weatherProvider.getForecastList().get(0));
                 clearAllSelectionsFromBottomPane();
                 return;
             }
             clearAllSelectionsFromBottomPane();
             anchorPaneTarget.getStyleClass().add("clickedAnchorPane");
             int weatherIndex = Integer.parseInt(anchorPaneTarget.getId().split("_")[1]);
-            System.out.println("Load element " + weatherIndex);
+            loadMainWeatherForecast(weatherProvider.getForecastList().get(weatherIndex));
+
         }
         catch (Exception e) {
         }
     }
+
+
 
     private void makeCityList() {
         try {
@@ -185,6 +268,5 @@ public class TitanController {
             TitanLogger.getInstance().write(e.getMessage(), 2, 1);
         }
     }
-
 
 }

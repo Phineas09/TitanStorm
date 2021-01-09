@@ -1,9 +1,9 @@
 .root {
-    -fx-background-image: url("../backgrounds/night_snow.png");
+    -fx-background-image: url("../backgrounds/day_clearsky.png");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
     -fx-background-position: center center;
-    -fx-text-background-color: black;
+    -fx-text-background-color: white;
 }
 
 .label {
@@ -14,15 +14,21 @@
     -fx-opacity: -fx-disabled-opacity;
 }
 
+.clickableImages {
+    -fx-border-width: 10px;
+    -fx-border-radius: 5%;
+    -fx-border-color: white;
+}
+
 .bottomGridPane * {
     //-fx-border-color: #464677;
 }
 
 .clickedAnchorPane {
-    //-fx-background-color: black;
     -fx-border-width: 1px;
     -fx-border-radius: 5%;
-    -fx-border-color: blue;
+    -fx-border-color: -fx-text-background-color;
+    -fx-opacity: 50%;
 }
 
 .combo-box .list-cell {
@@ -30,12 +36,11 @@
     -fx-background-color: transparent;
     -fx-text-fill: -fx-text-base-color;
     -fx-padding: 3 0 2 7;
+    -fx-alignment: center;
 }
-
 
 #weatherDescription {
     -fx-text-fill: black;
-
 }
 
 .combo-box-base {
@@ -43,10 +48,12 @@
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
+    -fx-alignment: center;
 }
 
 .combo-box-base:focused {
     -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
     -fx-background-radius: 6.4, 4, 5, 3;
     -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-alignment: center;
 }
