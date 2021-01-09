@@ -3,6 +3,9 @@ package ro.mta.se.lab.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ro.mta.se.lab.Main;
 import ro.mta.se.lab.controller.TitanController;
@@ -21,6 +24,7 @@ public class TitanScene {
     private static Scene scene = null;
     private static Stage bigStage = null;
     private static final String ScenePath = "view/TitanScene";
+    private static boolean visibleGridPanes = false;
 
     //I need two maps for background and color association
     private static HashMap<String, String> iconToBackgroundMap;
@@ -70,6 +74,11 @@ public class TitanScene {
             backgroundToColorSchemeMap.put("night_rain", "white");
             backgroundToColorSchemeMap.put("night_snow", "white");
 
+            scene.lookup("#infoGridPane").setVisible(false);
+            scene.lookup("#bottomGridPane").setVisible(false);
+            scene.lookup("#refreshButton").setVisible(false);
+
+
         } catch (IOException exception) {
             TitanLogger.getInstance().write(exception.getMessage(), 2, 1);
         }
@@ -105,6 +114,15 @@ public class TitanScene {
                 "-fx-text-background-color:" + backgroundToColorSchemeMap.get(iconToBackgroundMap.get(weatherModel.getWeatherIcon())) + ";"
         );
 
+    }
+
+    public void makeGridPanesVisible() {
+        if(!visibleGridPanes) {
+            bigStage.getScene().lookup("#infoGridPane").setVisible(true);
+            bigStage.getScene().lookup("#bottomGridPane").setVisible(true);
+            bigStage.getScene().lookup("#refreshButton").setVisible(true);
+            visibleGridPanes = true;
+        }
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

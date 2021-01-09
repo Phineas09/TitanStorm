@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import ro.mta.se.lab.controller.exceptions.TitanException;
 import ro.mta.se.lab.model.City;
 import ro.mta.se.lab.model.WeatherModel;
 import ro.mta.se.lab.view.TitanLogger;
@@ -29,15 +30,12 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class TitanController {
 
-    private HashMap<String, ArrayList<City>> countryList;
-
     @FXML
     private ComboBox<String> countryDropdown;
-
-    private AutoCompleteComboBox<String> autoCompleteCountryDropdown;
 
     @FXML
     private ComboBox<City> cityDropdown;
@@ -48,8 +46,9 @@ public class TitanController {
     @FXML
     private GridPane bottomGridPane;
 
+    private HashMap<String, ArrayList<City>> countryList;
     private AutoCompleteComboBox<String> autoCompleteCityDropdown;
-
+    private AutoCompleteComboBox<String> autoCompleteCountryDropdown;
     private WeatherProvider weatherProvider;
 
     public TitanController() {
@@ -62,20 +61,61 @@ public class TitanController {
 
     @FXML
     private void initialize() {
-
-        //Set test image
-
-
         Set<String> sortedKeys = new TreeSet<>(countryList.keySet());
         countryDropdown.setItems(FXCollections.observableArrayList(sortedKeys));
 
         autoCompleteCountryDropdown = new AutoCompleteComboBox<>(countryDropdown);
         autoCompleteCityDropdown = new AutoCompleteComboBox<>(cityDropdown);
-
-
-        //Maybe get local forecast
+        threadDispatcherGetCurrentLocationForecast();
     }
 
+    @FXML
+    private void refreshCurrentForecastHandler(MouseEvent mouseEvent) {
+        try {
+            threadDispatcherSetForecast(cityDropdown.getSelectionModel().getSelectedItem());
+            TitanLogger.getInstance().write("Refreshing forecast!", 2, 3);
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getCause());
+        }
+    }
+
+    @FXML
+    private void getCurrentLocationForecastHandler(MouseEvent mouseEvent) {
+        threadDispatcherGetCurrentLocationForecast();
+    }
+
+    private void threadDispatcherGetCurrentLocationForecast() {
+        TitanThread.runNewThread(() -> {
+            if (!Thread.interrupted()) {
+                try {
+                    TitanLogger.getInstance().write("Finding location and loading forecast!", 2, 3);
+                    //Make request to find the ip address
+
+                    WeatherRequest requestMaker = new WeatherRequest();
+                    String currentCityJSON = requestMaker.makeHttpRequest("https://geo.ipify.org/api/v1?apiKey=" +
+                            requestMaker.getGeoApiKey());
+
+                    //Create city object
+
+                    JSONObject jsonObject = (new JSONObject(currentCityJSON)).getJSONObject("location");
+                    City currentCity = new City("", jsonObject.getString("city"),
+                            jsonObject.get("lat").toString(), jsonObject.get("lng").toString(),
+                            jsonObject.getString("country"));
+
+                Platform.runLater(() -> {
+                    countryDropdown.getSelectionModel().select(currentCity.getCountryCode());
+                    cityDropdown.getSelectionModel().select(currentCity);
+                    //Event will trigger and wil auto load the currentCity, we just needed to find it!
+                });
+                } catch (TitanException titanException) {
+                    titanException.getMessage();
+                } catch (Exception e) {
+                    TitanLogger.getInstance().write(e.getMessage(), 2, 1);
+                }
+            }
+        });
+    }
 
     @FXML
     private void cityActionHandler(ActionEvent event) {
@@ -87,21 +127,17 @@ public class TitanController {
     }
 
     public void threadDispatcherSetForecast(City city) {
-        //System.out.println(city.getName());
-
         TitanThread.runNewThread(() -> {
-            while (true) {
-                if (Thread.interrupted()) {
-                    System.out.println("Make request");
-                    List<WeatherModel> weatherList =  weatherProvider.getWeekWeather(city);
-                    //Change background images and other stuff
-                    Platform.runLater(() -> {
-                        clearAllSelectionsFromBottomPane();
-                        loadMainWeatherForecast(weatherList.get(0));
-                        loadSideWeatherForecast(weatherList);
-                    });
-                    return;
-                }
+            if (!Thread.interrupted()) {
+                List<WeatherModel> weatherList =  weatherProvider.getWeekWeather(city);
+                //Change background images and other stuff
+
+                Platform.runLater(() -> {
+                    TitanScene.getInstance().makeGridPanesVisible(); //Only executed once
+                    clearAllSelectionsFromBottomPane();
+                    loadMainWeatherForecast(weatherList.get(0));
+                    loadSideWeatherForecast(weatherList);
+                });
             }
         });
     }
@@ -131,7 +167,7 @@ public class TitanController {
 
     private void loadMainWeatherForecast(WeatherModel weatherModel) {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        DateFormat nowFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+        DateFormat nowFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         //String strDate = dateFormat.format(date);
 
         File file = new File("src/main/resources/ro/mta/se/lab/icons/" + weatherModel.getWeatherIcon() + ".png");
@@ -183,7 +219,7 @@ public class TitanController {
     }
 
     @FXML
-    public void bottomGridPaneElementSelectedHandler(MouseEvent mouseEvent) {
+    private void bottomGridPaneElementSelectedHandler(MouseEvent mouseEvent) {
         try {
             AnchorPane anchorPaneTarget = (AnchorPane)mouseEvent.getSource();
             if(anchorPaneTarget.getStyleClass().contains("clickedAnchorPane")) {
@@ -201,6 +237,8 @@ public class TitanController {
         catch (Exception e) {
         }
     }
+
+
 
     private void makeCityList() {
         try {
@@ -230,6 +268,5 @@ public class TitanController {
             TitanLogger.getInstance().write(e.getMessage(), 2, 1);
         }
     }
-
 
 }

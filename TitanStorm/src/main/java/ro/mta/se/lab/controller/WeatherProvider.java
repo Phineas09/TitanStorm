@@ -1,6 +1,5 @@
 package ro.mta.se.lab.controller;
 
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import ro.mta.se.lab.model.City;

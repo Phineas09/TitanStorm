@@ -1,4 +1,9 @@
 .root {
+    -fx-background-image: url("../backgrounds/day_clearsky.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-text-background-color: white;
 }
 
 .label {
@@ -7,6 +12,12 @@
 
 .label:disabled {
     -fx-opacity: -fx-disabled-opacity;
+}
+
+.clickableImages {
+    -fx-border-width: 10px;
+    -fx-border-radius: 5%;
+    -fx-border-color: white;
 }
 
 .bottomGridPane * {
