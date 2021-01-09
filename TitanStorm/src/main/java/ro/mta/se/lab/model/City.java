@@ -79,4 +79,9 @@ public class City {
     public void setCountryCode(String countryCode) {
         this.countryCode.set(countryCode);
     }
+
+    @Override
+    public String toString() {
+        return name.getValue();
+    }
 }

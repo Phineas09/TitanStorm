@@ -18,6 +18,7 @@ public class TitanScene {
 
     private static TitanScene instance = null;
     private static Scene scene = null;
+    private static Stage bigStage = null;
     private static final String ScenePath = "view/TitanScene";
 
 
@@ -30,6 +31,8 @@ public class TitanScene {
 
             fxmlLoader.setController(new TitanController(countryList));
             scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(Main.class.getResource("view/styles.css").toExternalForm());
+
         } catch (IOException exception) {
             TitanLogger.getInstance().write(exception.getMessage(), 2, 1);
         }
@@ -46,9 +49,25 @@ public class TitanScene {
         if (instance == null) {
             instance = new TitanScene(ScenePath);
         }
+        bigStage = stage;
         stage.setScene(scene);
+        stage.setTitle("TitanStorm Weather App");
+        stage.setResizable(false);
         stage.show();
         return instance;
+    }
+
+    public void changePrimaryColor(String color) {
+
+        String image = Main.class.getResource("backgrounds/day_clearsky.png").toExternalForm();
+        bigStage.getScene().getRoot().setStyle(
+                "-fx-background-image: url('" + image + "'); " +
+                "-fx-background-repeat: stretch;" +
+                "-fx-background-size: cover;" +
+                "-fx-background-position: center center;" +
+                "-fx-text-background-color: white;"
+        );
+
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

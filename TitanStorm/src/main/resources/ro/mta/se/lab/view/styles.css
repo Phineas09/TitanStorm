@@ -1,0 +1,52 @@
+.root {
+    -fx-background-image: url("../backgrounds/night_snow.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-text-background-color: black;
+}
+
+.label {
+    -fx-text-fill: -fx-text-background-color;
+}
+
+.label:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.bottomGridPane * {
+    //-fx-border-color: #464677;
+}
+
+.clickedAnchorPane {
+    //-fx-background-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5%;
+    -fx-border-color: blue;
+}
+
+.combo-box .list-cell {
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-padding: 3 0 2 7;
+}
+
+
+#weatherDescription {
+    -fx-text-fill: black;
+
+}
+
+.combo-box-base {
+    -fx-background-color: white, white, white, white;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+.combo-box-base:focused {
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-radius: 6.4, 4, 5, 3;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}

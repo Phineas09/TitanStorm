@@ -1,0 +1,12 @@
+[ 07.01.2021 - 01.40.11 ] Error: 
+/D:/Projects/TitanStorm/TitanStorm/target/classes/ro/mta/se/lab/view/TitanScene.fxml
+
+[ 07.01.2021 - 01.40.31 ] Error: 
+/D:/Projects/TitanStorm/TitanStorm/target/classes/ro/mta/se/lab/view/TitanScene.fxml
+
+[ 08.01.2021 - 00.22.19 ] Error: Controller value already specified.
+/D:/Projects/TitanStorm/TitanStorm/target/classes/ro/mta/se/lab/view/TitanScene.fxml:17
+
+[ 08.01.2021 - 00.46.30 ] Error: Controller value already specified.
+/D:/Projects/TitanStorm/TitanStorm/target/classes/ro/mta/se/lab/view/TitanScene.fxml:15
+
