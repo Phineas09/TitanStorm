@@ -12,34 +12,14 @@ import java.util.List;
 
 public class WeatherProvider {
 
-    private City currentCity;
     private TitanLogger titanLogger;
     private WeatherRequest weatherRequest;
-
     private List<WeatherModel> forecastList;
 
     public WeatherProvider() {
         weatherRequest = new WeatherRequest();
         titanLogger = TitanLogger.getInstance();
         forecastList = new ArrayList<>();
-    }
-
-    public City getCurrentCity() {
-        return currentCity;
-    }
-
-    public void setCurrentCity(City currentCity) {
-        this.currentCity = currentCity;
-    }
-
-
-    public WeatherModel getCurrentWeather(City city) {
-
-
-        titanLogger.write("WeatherProvider provided current weather for city " + city.getId() + ". ",
-                2, 3);
-
-        return null;
     }
 
     public List<WeatherModel> getWeekWeather(City city) {
@@ -64,11 +44,6 @@ public class WeatherProvider {
         titanLogger.write("WeatherProvider provided a 7 day forecast for city " + city.getName() + ". ",
                 2, 3);
         return forecastList;
-    }
-
-
-    public String getForecastByCountryId(String countryId) {
-        return weatherRequest.getForecast("api.openweathermap.org/data/2.5/weather?id=" + countryId);
     }
 
     public String getWeekForecast(City city) {

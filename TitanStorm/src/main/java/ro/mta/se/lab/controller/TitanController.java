@@ -30,7 +30,6 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.logging.Logger;
 
 public class TitanController {
 
@@ -237,9 +236,7 @@ public class TitanController {
         catch (Exception e) {
         }
     }
-
-
-
+    
     private void makeCityList() {
         try {
             FileWriter myWriter = new FileWriter("src/main/resources/ro/mta/se/lab/model/cityList.txt",

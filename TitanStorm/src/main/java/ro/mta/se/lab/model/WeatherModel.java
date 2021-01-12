@@ -3,14 +3,14 @@ package ro.mta.se.lab.model;
 import org.apache.commons.text.WordUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import ro.mta.se.lab.view.TitanLogger;
 
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class WeatherModel {
 
+    private TitanLogger titanLogger;
 
     private Date timeNow;
     private Date sunRise;
@@ -39,44 +39,48 @@ public class WeatherModel {
      * @param jsonObject the jsonObject that will be parsed into the model
      */
     public WeatherModel(int jsonType, JSONObject jsonObject) {
+        titanLogger = TitanLogger.getInstance();
         try {
-
-            timeNow = new Date(Long.parseLong(jsonObject.get("dt").toString() + "000"));
-            sunRise = new Date(Long.parseLong(jsonObject.get("sunrise").toString() + "000"));
-            sunSet = new Date(Long.parseLong(jsonObject.get("sunset").toString() + "000"));
-
-            pressure = jsonObject.get("pressure").toString();
-            humidity = jsonObject.get("humidity").toString();
-            dewPoint = jsonObject.get("dew_point").toString();
-            uvIndex = jsonObject.get("uvi").toString();
-            clouds = jsonObject.get("clouds").toString();
-            windSpeed = jsonObject.get("wind_speed").toString();
-            windDeg = jsonObject.get("wind_deg").toString();
-
-            //Weather
-            JSONObject weatherJson = (JSONObject)((JSONArray)jsonObject.get("weather")).get(0);
-
-            weatherMain = weatherJson.getString("main");
-            weatherDescription = WordUtils.capitalize(weatherJson.getString("description"));
-            weatherIcon = weatherJson.getString("icon");
-
-            if(jsonType == 0) {
-                currentTempC = jsonObject.get("temp").toString();
-                feelsLikeC = jsonObject.get("feels_like").toString();
-
-            } else {
-                currentTempC = ((JSONObject)jsonObject.get("temp")).get("day").toString();
-                //TODO: Get min and max
-                minTemp = ((JSONObject)jsonObject.get("temp")).get("min").toString();
-                maxTemp = ((JSONObject)jsonObject.get("temp")).get("max").toString();
-                feelsLikeC = ((JSONObject)jsonObject.get("feels_like")).get("day").toString();
-            }
-
-            //System.out.println(this.toString());
+            parseJson(jsonType, jsonObject);
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            titanLogger.write(e.getMessage(), 2, 1);
         }
+    }
+
+    private void parseJson(int jsonType, JSONObject jsonObject) throws Exception {
+
+        timeNow = new Date(Long.parseLong(jsonObject.get("dt").toString() + "000"));
+        sunRise = new Date(Long.parseLong(jsonObject.get("sunrise").toString() + "000"));
+        sunSet = new Date(Long.parseLong(jsonObject.get("sunset").toString() + "000"));
+
+        pressure = jsonObject.get("pressure").toString();
+        humidity = jsonObject.get("humidity").toString();
+        dewPoint = jsonObject.get("dew_point").toString();
+        uvIndex = jsonObject.get("uvi").toString();
+        clouds = jsonObject.get("clouds").toString();
+        windSpeed = jsonObject.get("wind_speed").toString();
+        windDeg = jsonObject.get("wind_deg").toString();
+
+        //Weather
+        JSONObject weatherJson = (JSONObject)((JSONArray)jsonObject.get("weather")).get(0);
+
+        weatherMain = weatherJson.getString("main");
+        weatherDescription = WordUtils.capitalize(weatherJson.getString("description"));
+        weatherIcon = weatherJson.getString("icon");
+
+        if(jsonType == 0) {
+            currentTempC = jsonObject.get("temp").toString();
+            feelsLikeC = jsonObject.get("feels_like").toString();
+
+        } else {
+            currentTempC = ((JSONObject)jsonObject.get("temp")).get("day").toString();
+            //TODO: Get min and max
+            minTemp = ((JSONObject)jsonObject.get("temp")).get("min").toString();
+            maxTemp = ((JSONObject)jsonObject.get("temp")).get("max").toString();
+            feelsLikeC = ((JSONObject)jsonObject.get("feels_like")).get("day").toString();
+        }
+
     }
 
     public String convertToF(String celsiusTemp) {
@@ -84,6 +88,21 @@ public class WeatherModel {
         Double degrees = Double.parseDouble(celsiusTemp);
         degrees = ((degrees*9)/5)+32;
         return df.format(degrees);
+    }
+
+    /**
+     * Those are only used for testing !
+     */
+    public WeatherModel() {
+        titanLogger = TitanLogger.getInstance();
+    }
+
+    public void setWeatherModelData(int jsonType, JSONObject jsonObject) {
+        try {
+            parseJson(jsonType, jsonObject);
+        } catch (Exception e) {
+            titanLogger.write(e.getMessage(), 2, 1);
+        }
     }
 
     public Date getTimeNow() {
@@ -153,7 +172,6 @@ public class WeatherModel {
     public String getMaxTemp() {
         return maxTemp;
     }
-
 
     @Override
     public String toString() {
