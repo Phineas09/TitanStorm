@@ -21,8 +21,7 @@ public class City {
 
     public City(String id, String name, String lat, String lon, String countryCode) {
         this.id = new SimpleStringProperty(id);
-        String resultString = name.replaceAll("[^\\x00-\\x7F]", "");
-        this.name = new SimpleStringProperty(resultString);
+        this.name = new SimpleStringProperty(name);
         this.lat = new SimpleStringProperty(lat);
         this.lon = new SimpleStringProperty(lon);
         this.countryCode = new SimpleStringProperty(countryCode);
