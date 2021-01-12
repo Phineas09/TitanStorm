@@ -28,7 +28,6 @@ public class WeatherRequest {
         return null;
     }
 
-
     public String makeHttpRequest(String targetUri) throws TitanException {
         try {
             TitanLogger.getInstance().write("HTTP request to " + targetUri, 2, 3);
@@ -56,5 +55,9 @@ public class WeatherRequest {
 
     public String getGeoApiKey() {
         return GEOLOCATIONAPIKEY;
+    }
+
+    public String getWeatherKey() {
+        return APIKEY;
     }
 }

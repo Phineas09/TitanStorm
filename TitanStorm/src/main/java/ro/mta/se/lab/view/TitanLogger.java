@@ -23,7 +23,6 @@ public class TitanLogger {
         return instance;
     }
 
-
     public synchronized void setOutputFile(String filePath) throws TitanException {
         try {
             if (filePath == null) {
@@ -90,7 +89,6 @@ public class TitanLogger {
                 default:
                     throw new InputException("Unknown stdout provided!");
             }
-
         }
         catch(Exception err) {
             err.getMessage();

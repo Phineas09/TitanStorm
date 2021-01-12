@@ -5,9 +5,11 @@ import java.util.concurrent.*;
 public class TitanThread extends Thread {
 
     private Runnable runnable;
+    private ExecutorService executorService;
 
     public TitanThread(Runnable runnableObject) {
         runnable = runnableObject;
+        executorService = Executors.newSingleThreadExecutor();
     }
 
     public static synchronized void runNewThread(Runnable runnableObject) {
@@ -17,16 +19,16 @@ public class TitanThread extends Thread {
 
     @Override
     public void run() {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Future future = executor.submit(runnable);
+        Future future = executorService.submit(runnable);
         try {
             future.get(3, TimeUnit.SECONDS);
         } catch(TimeoutException ex) {
             future.cancel(true);
         } catch (Exception e) {
-            executor.shutdownNow();
+            executorService.shutdownNow();
         } finally {
-            executor.shutdownNow();
+            executorService.shutdownNow();
         }
     }
+
 }
