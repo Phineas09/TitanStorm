@@ -1,8 +1,10 @@
 package ro.mta.se.lab.controller.exceptions;
 
-
 import ro.mta.se.lab.view.TitanLogger;
 
+/**
+ * Concrete class for TitanException for the other classes of exceptions to inherit.
+ */
 public class _TitanException extends TitanException {
 
     /** Message string, contains the corresponding error message */
@@ -11,7 +13,7 @@ public class _TitanException extends TitanException {
     private String exceptionType;
 
     /**
-     * Constructor for _CrawlerException
+     * Constructor for _TitanException
      *
      * @param exceptionType exceptionType of the derived error
      * @param message custom error message

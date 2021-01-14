@@ -3,14 +3,24 @@ package ro.mta.se.lab.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Model for the city object
+ */
 public class City {
 
+    /**
+     * All the fields specific to a city
+     */
     StringProperty id;
     StringProperty name;
     StringProperty lat;
     StringProperty lon;
     StringProperty countryCode;
 
+    /**
+     * Basic constructor that receives only the name, all the other props will be null.
+     * @param name name of the city
+     */
     public City(String name) {
         this.name = new SimpleStringProperty(name);
         this.id = null;
@@ -19,6 +29,14 @@ public class City {
         this.countryCode = null;
     }
 
+    /**
+     * Constructor that will initialize our city object.
+     * @param id if of the city
+     * @param name name of the city
+     * @param lat latitude of the city
+     * @param lon longitude of the city
+     * @param countryCode afferent country code
+     */
     public City(String id, String name, String lat, String lon, String countryCode) {
         this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);

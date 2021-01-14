@@ -11,6 +11,8 @@ import ro.mta.se.lab.model.WeatherModelTest;
         WeatherRequestTest.class,
         WeatherProviderTest.class,
         WeatherModelTest.class})
-
+/**
+ * Runs the test suite for the TitanStorm app
+ */
 public class TitanStormTestSuite {
 }

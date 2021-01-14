@@ -8,6 +8,10 @@ import ro.mta.se.lab.view.TitanLogger;
 import java.text.DecimalFormat;
 import java.util.Date;
 
+/**
+ * Model for the weather forecast, holds all the data that is provided by the api
+ * It will parse the json obtained into the afferent members.
+ */
 public class WeatherModel {
 
     private TitanLogger titanLogger;
@@ -48,6 +52,13 @@ public class WeatherModel {
         }
     }
 
+    /**
+     * Parses the json into members.
+     *
+     * @param jsonType 0 for current and 1 for daily parsing
+     * @param jsonObject the jsonObject that will be parsed into the model
+     * @throws Exception if the json is not formatted as expected.
+     */
     private void parseJson(int jsonType, JSONObject jsonObject) throws Exception {
 
         timeNow = new Date(Long.parseLong(jsonObject.get("dt").toString() + "000"));
@@ -83,6 +94,12 @@ public class WeatherModel {
 
     }
 
+    /**
+     * Converts degrees C into F.
+     *
+     * @param celsiusTemp string containing a value of degrees in C
+     * @return a string with one decimal with the value of degrees in F
+     */
     public String convertToF(String celsiusTemp) {
         DecimalFormat df = new DecimalFormat("0.0");
         Double degrees = Double.parseDouble(celsiusTemp);
@@ -97,6 +114,11 @@ public class WeatherModel {
         titanLogger = TitanLogger.getInstance();
     }
 
+    /**
+     * Sets the weather model for the class.
+     * @param jsonType 0 for current and 1 for daily parsing
+     * @param jsonObject the jsonObject that will be parsed into the model
+     */
     public void setWeatherModelData(int jsonType, JSONObject jsonObject) {
         try {
             parseJson(jsonType, jsonObject);
@@ -104,6 +126,8 @@ public class WeatherModel {
             titanLogger.write(e.getMessage(), 2, 1);
         }
     }
+
+    //Setters and getters
 
     public Date getTimeNow() {
         return timeNow;

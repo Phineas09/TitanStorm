@@ -7,7 +7,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-
+/**
+ * This class is for making a searchable ComboBox.<p>
+ * Inspired from website.
+ * @see <a href="https://stackoverflow.com/questions/35931901/autocomplete-combobox-with-id-and-value-pair-using-javafx">Stack Overflow</a>
+ */
 public class AutoCompleteComboBox<T> implements EventHandler<KeyEvent> {
 
     private ComboBox comboBox;
