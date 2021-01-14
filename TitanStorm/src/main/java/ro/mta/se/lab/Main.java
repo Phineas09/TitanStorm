@@ -1,43 +1,64 @@
 package ro.mta.se.lab;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ro.mta.se.lab.controller.exceptions.TitanException;
 import ro.mta.se.lab.view.TitanLogger;
 import ro.mta.se.lab.view.TitanScene;
 
-import java.io.IOException;
-
+/**
+ * Main class of the TitanStorm WeatherApp
+ */
 public class Main extends Application {
 
-    private static TitanScene titanScene;
+    /**
+     * Default logger pathFile given by argument or the default one to be used | -logFile
+     */
+    private static String loggerFilePath = "src/main/resources/ro/mta/se/lab/logFile.txt";
+    /**
+     * InputCityFilePath given by argument or the default one to be used | -inFile
+     */
+    private static String inputCityFilePath = "src/main/resources/ro/mta/se/lab/model/cityList.txt";
 
     @Override
-    public void start(Stage stage) throws TitanException {
+    public void start(Stage stage) {
+        //Instantiate the TitanScene static class
+        TitanScene.getInstance(stage, inputCityFilePath);
+    }
+
+    /**
+     * Main function
+     * @param args arguments given to the program
+     *  <p><b>-inFile for the city file list and -logFile for the log file</b></p>
+     */
+    public static void main(String[] args) {
         try {
+            //Parse arguments
+            parseArguments(args);
             //Configure Logger
-            TitanLogger.getInstance().setOutputFile("src/main/resources/ro/mta/se/lab/logFile.txt");
-            titanScene = TitanScene.getInstance(stage);
+            TitanLogger.getInstance().setOutputFile(loggerFilePath);
+            //Configure titanScene
+            launch();
         }
         catch (TitanException exception) {
             exception.getMessage();
         }
     }
 
-    public static void setRoot(String fxml) throws IOException {
-        //scene.setRoot(loadFXML(fxml));
+    /**
+     * Parse arguments -inFile for the city file list and -logFile for the log file
+     * @param args arguments given to the program
+     */
+    private static void parseArguments(String[] args) {
+        if (args.length != 0) {
+            for (int i = 0; i < args.length; i += 2) {
+                if (args[i].equalsIgnoreCase("-inFile")) {
+                    inputCityFilePath = args[i + 1];
+                }
+                if (args[i].equalsIgnoreCase("-logFile")) {
+                    loggerFilePath = args[i + 1];
+                }
+            }
+        }
     }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
 }

@@ -14,6 +14,10 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
+/**
+ * Test class for WeatherRequest, it's a unit test with no mocks, it has a localserver for testing
+ * the requests responses codes and messages.
+ */
 public class WeatherRequestTest {
 
     private WeatherRequest weatherRequest;
@@ -36,12 +40,15 @@ public class WeatherRequestTest {
     @Before
     public void setUp() throws Exception {
         weatherRequest = new WeatherRequest();
+
+        //Start the local server and register all paths as valid
         server.start();
         server.register("/*", myHttpRequestHandler);
     }
 
     @After
     public void tearDown() throws Exception {
+        //Stop the server, the server it's not static so i cannot do an @AfterClass
         server.stop();
     }
 
@@ -52,6 +59,10 @@ public class WeatherRequestTest {
         assertEquals(weatherRequest.getWeatherKey(), APIKEY);
     }
 
+    /**
+     * Tests the responses provided and expected
+     * @throws Exception in case the test fails
+     */
     @Test
     public void testMakeHttpRequest() throws Exception {
         String serverUrl = "http:/" + server.getServiceAddress();
@@ -60,12 +71,18 @@ public class WeatherRequestTest {
         assertEquals("testHttpRequest?apikey=" + weatherRequest.getGeoApiKey(), weatherRequest.makeHttpRequest(serverUrl) + "?apikey=" + weatherRequest.getGeoApiKey());
     }
 
+    /**
+     * Tests that the application will throw given a wrong url as target
+     */
     @Test (expected = TitanException.class)
     public void testMakeHttpRequestThrow() throws TitanException {
         weatherRequest.makeHttpRequest("");
     }
 
-    @Test (timeout = 400)
+    /**
+     * Test the connectivity with the real used api.
+     */
+    @Test (timeout = 450)
     public void testGetForecast() {
         //Request directly on the website
         String requestStringFirst = "api.openweathermap.org/data/2.5/onecall?lat=" + "44.640041" +

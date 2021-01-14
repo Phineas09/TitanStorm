@@ -12,6 +12,10 @@ import ro.mta.se.lab.view.TitanLogger;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for WeatherModel will mock the logger for detecting crashes inside the constructor
+ * and will test the behaviour of the constructor, unwrapping a json into the correct variables
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class WeatherModelTest {
 
