@@ -1,0 +1,31 @@
+[ 17.01.2021 - 18.17.15 ] Info: Finding location and loading forecast!
+[ 17.01.2021 - 18.17.15 ] Info: HTTP request to https://geo.ipify.org/api/v1?apiKey=at_dSkpqzlKeSA4KaW2PCdTOkHE7eF93
+[ 17.01.2021 - 18.17.24 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=44.49002&lon=26.17338&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.17.25 ] Info: WeatherProvider provided a 7 day forecast for city Voluntari. 
+[ 17.01.2021 - 18.51.01 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=60.0&lon=20.5&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.51.01 ] Info: WeatherProvider provided a 7 day forecast for city Föglö. 
+[ 17.01.2021 - 18.51.08 ] Info: Finding location and loading forecast!
+[ 17.01.2021 - 18.51.08 ] Info: HTTP request to https://geo.ipify.org/api/v1?apiKey=at_dSkpqzlKeSA4KaW2PCdTOkHE7eF93
+[ 17.01.2021 - 18.51.09 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=44.49002&lon=26.17338&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.51.09 ] Info: WeatherProvider provided a 7 day forecast for city Voluntari. 
+[ 17.01.2021 - 18.51.57 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=44.491299&lon=26.03459&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.51.57 ] Info: WeatherProvider provided a 7 day forecast for city Bucureştii Noi. 
+[ 17.01.2021 - 18.52.03 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=46.133331&lon=22.9&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.52.03 ] Info: WeatherProvider provided a 7 day forecast for city Bucureşci. 
+[ 17.01.2021 - 18.52.05 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=44.491299&lon=26.03459&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.52.05 ] Info: WeatherProvider provided a 7 day forecast for city Bucureştii Noi. 
+[ 17.01.2021 - 18.52.07 ] Info: Finding location and loading forecast!
+[ 17.01.2021 - 18.52.07 ] Info: HTTP request to https://geo.ipify.org/api/v1?apiKey=at_dSkpqzlKeSA4KaW2PCdTOkHE7eF93
+[ 17.01.2021 - 18.52.08 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=44.49002&lon=26.17338&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.52.08 ] Info: WeatherProvider provided a 7 day forecast for city Voluntari. 
+[ 17.01.2021 - 18.52.13 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=44.491299&lon=26.03459&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.52.13 ] Info: WeatherProvider provided a 7 day forecast for city Bucureştii Noi. 
+[ 17.01.2021 - 18.52.21 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=-6.04417&lon=-35.428329&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.52.22 ] Info: WeatherProvider provided a 7 day forecast for city Vera Cruz. 
+[ 17.01.2021 - 18.52.25 ] Info: Refreshing forecast!
+[ 17.01.2021 - 18.52.25 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=-6.04417&lon=-35.428329&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.52.25 ] Info: WeatherProvider provided a 7 day forecast for city Vera Cruz. 
+[ 17.01.2021 - 18.52.26 ] Info: Finding location and loading forecast!
+[ 17.01.2021 - 18.52.26 ] Info: HTTP request to https://geo.ipify.org/api/v1?apiKey=at_dSkpqzlKeSA4KaW2PCdTOkHE7eF93
+[ 17.01.2021 - 18.52.27 ] Info: HTTP request to http://api.openweathermap.org/data/2.5/onecall?lat=44.49002&lon=26.17338&exclude=minutely,hourly,alerts&units=metric&appid=67ca8d4acae59d540ea421e817caf1bb
+[ 17.01.2021 - 18.52.27 ] Info: WeatherProvider provided a 7 day forecast for city Voluntari. 
