@@ -2,7 +2,6 @@ TitanStorm/out/
 TitanStorm/src/main/resources/ro/mta/se/lab/model/*
 !TitanStorm/src/main/resources/ro/mta/se/lab/model/cityList.txt
 TitanStorm/target/
-TitanStorm/.idea/
 .idea_modules/
 *.iml
 *.ipr
