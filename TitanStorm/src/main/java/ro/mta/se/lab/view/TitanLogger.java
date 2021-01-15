@@ -50,6 +50,8 @@ public class TitanLogger {
             }
         }
         catch(_TitanException | IOException err) {
+            //In case of invalid path ./logFile.txt will be used!
+            setOutputFile("logFile.txt");
             throw new InputException("Invalid filepath entered!");
         }
     }

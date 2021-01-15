@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TitanStorm" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d629759b-72fd-4a2d-b4f6-c774878df620" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="JUnit3 Test Class" />
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1mcrInyPoov2cGHcWfyU0XejMdY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3" value="junit.framework.TestCase" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ro.mta.se.lab.model" />
+      <recent name="ro.mta.se.lab.controller" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ro.mta.se.lab" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\TitanStorm\TitanStorm\src" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\TitanStorm\TitanStorm\src" />
+      <recent name="D:\Projects\TitanStorm\TitanStorm\src\main\java\ro\mta\se\lab" />
+      <recent name="D:\Projects\TitanStorm\TitanStorm\src\main\resources\ro\mta\se\lab\miscellaneous" />
+      <recent name="D:\Projects\TitanStorm\TitanStorm\src\main\resources\ro\mta\se\lab" />
+      <recent name="D:\Projects\TitanStorm\TitanStorm\src\main\resources\ro\mta\se\lab\" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn -version" />
+      <command value="mvn -e clean javafx:jlink" />
+      <command value="mvn clean javafx:jlink" />
+      <command value="mvn -X clean javafx:jlink" />
+      <command value="mvn compile package" />
+      <command value="mvn clean test" />
+      <command value="mvn test" />
+      <command value="mvn clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Maven.TitanStorm">
+    <configuration name="TitanStormApp" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="ro.mta.se.lab.Main" />
+      <module name="TitanStorm" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\Program Files\JavaFX\javafx-sdk-15.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TitanStormTestSuite" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="TitanStorm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ro.mta.se.lab.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ro.mta.se.lab" />
+      <option name="MAIN_CLASS_NAME" value="ro.mta.se.lab.TitanStormTestSuite" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TitanStorm" type="MavenRunConfiguration" factoryName="Maven" singleton="false">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.TitanStormApp" />
+      <item itemvalue="JUnit.TitanStormTestSuite" />
+      <item itemvalue="Maven.TitanStorm" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d629759b-72fd-4a2d-b4f6-c774878df620" name="Default Changelist" comment="" />
+      <created>1609803643034</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609803643034</updated>
+      <workItem from="1609803645338" duration="1049000" />
+      <workItem from="1609805135590" duration="1272000" />
+      <workItem from="1609834501414" duration="749000" />
+      <workItem from="1609859004507" duration="322000" />
+      <workItem from="1609859359879" duration="1401000" />
+      <workItem from="1609861196624" duration="9795000" />
+      <workItem from="1609884241392" duration="1309000" />
+      <workItem from="1609885556183" duration="115000" />
+      <workItem from="1609885863105" duration="1308000" />
+      <workItem from="1609887193675" duration="1362000" />
+      <workItem from="1609913852220" duration="7878000" />
+      <workItem from="1609947404327" duration="7015000" />
+      <workItem from="1609966018846" duration="4020000" />
+      <workItem from="1609970342329" duration="8047000" />
+      <workItem from="1610008154710" duration="9473000" />
+      <workItem from="1610054486744" duration="13174000" />
+      <workItem from="1610093892094" duration="8711000" />
+      <workItem from="1610110814561" duration="5806000" />
+      <workItem from="1610186729201" duration="9017000" />
+      <workItem from="1610198507618" duration="853000" />
+      <workItem from="1610308181884" duration="1453000" />
+      <workItem from="1610309725153" duration="2439000" />
+      <workItem from="1610439787922" duration="18068000" />
+      <workItem from="1610475176678" duration="2148000" />
+      <workItem from="1610521570676" duration="290000" />
+      <workItem from="1610626518858" duration="16592000" />
+      <workItem from="1610697255771" duration="379000" />
+      <workItem from="1610697669695" duration="726000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="7" key="#Project_Structure" timestamp="1609951663077">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="249" y="7" key="#Project_Structure/0.0.1536.864@0.0.1536.864" timestamp="1609951663077" />
+    <state x="301" y="37" width="1089" height="785" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610697989750">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="301" y="37" width="1089" height="785" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1610697989750" />
+    <state x="536" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1610641126107">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="536" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1610641126107" />
+    <state x="308" y="157" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1610310429733">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="308" y="157" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.864@0.0.1536.864" timestamp="1610310429733" />
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1610456006253">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1610456006253" />
+    <state x="499" y="223" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1610640662427">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="223" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1610640662427" />
+    <state x="551" y="301" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1610521833330">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="551" y="301" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864@0.0.1536.864" timestamp="1610521833330" />
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1609972031508">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1609972031508" />
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1610309534613">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1610309534613" />
+    <state width="1493" height="238" key="GridCell.Tab.0.bottom" timestamp="1610698406426">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="238" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1610698406426" />
+    <state width="1493" height="238" key="GridCell.Tab.0.center" timestamp="1610698406426">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="238" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1610698406426" />
+    <state width="1493" height="238" key="GridCell.Tab.0.left" timestamp="1610698406426">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="238" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1610698406426" />
+    <state width="1493" height="238" key="GridCell.Tab.0.right" timestamp="1610698406426">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="238" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1610698406426" />
+    <state width="1493" height="335" key="GridCell.Tab.1.bottom" timestamp="1610643201578">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="335" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1610643201578" />
+    <state width="1493" height="335" key="GridCell.Tab.1.center" timestamp="1610643201578">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="335" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1610643201578" />
+    <state width="1493" height="335" key="GridCell.Tab.1.left" timestamp="1610643201578">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="335" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1610643201578" />
+    <state width="1493" height="335" key="GridCell.Tab.1.right" timestamp="1610643201578">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="335" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1610643201578" />
+    <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1609859649673">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="299" y="87" key="Maven.ArtifactSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1609859649673" />
+    <state x="249" y="7" key="SettingsEditor" timestamp="1610311129581">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="249" y="7" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1610311129581" />
+    <state x="973" y="122" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1610456246287">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="973" y="122" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1610456246287" />
+    <state x="320" y="161" width="895" height="628" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1610443410307">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="320" y="161" width="895" height="628" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1610443410307" />
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup" timestamp="1610697947046">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1610697947046" />
+    <state x="431" y="181" width="672" height="160" key="search.everywhere.popup" timestamp="1610310316511">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="181" width="672" height="160" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1610310316511" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.AssertionError" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
